@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { fetchPosts } from "../api/posts"
 import styled from "styled-components"
 import PostForm from "../components/PostForm"
+import { Link } from "react-router-dom"
+import PostDetail from "./PostDetail"
 
 const PostCard = styled.div`
     background: #f9f9f9;
@@ -42,8 +44,10 @@ const Blog = () => {
             <PostForm onPostCreated={handleNewPost}/>
             {posts.map((post) => (
                 <PostCard key={post._id}>
-                    <h2>{post.title}</h2>
-                    <p>{post.content}</p>
+                    <Link to={`/blog/${post._id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                        <h2>{post.title}</h2>
+                    </Link>
+                    <p>{post.content.substring(0, 100)}...</p>
                     <small>Author: {post.author}</small>
                 </PostCard>
             ))}
@@ -51,4 +55,4 @@ const Blog = () => {
     )
 }
 
-export default Blog
+export default PostDetail
