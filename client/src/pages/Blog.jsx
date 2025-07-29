@@ -1,9 +1,5 @@
-import { useState, useEffect } from "react"
-import { fetchPosts } from "../api/posts"
 import styled from "styled-components"
-import PostForm from "../components/PostForm"
 import { Link } from "react-router-dom"
-import PostDetail from "./PostDetail"
 
 const BlogContainer = styled.div`
     padding: 1rem;
