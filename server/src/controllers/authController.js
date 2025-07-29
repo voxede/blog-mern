@@ -45,7 +45,7 @@ export const login = async (req, res) => {
         const { email, password } = req.body
 
         // Validar si el usuario existe
-        const user = await user.findOne({ email })
+        const user = await User.findOne({ email })
         if(!user) {
             return res.status(404).json({ message: "Usuario no encontrado" })
         }
@@ -65,6 +65,6 @@ export const login = async (req, res) => {
 
         res.status(200).json({ user, token })
     } catch(error) {
-        res.status(500).json({ message: "Error en el login" })
+        res.status(500).json({ message: "Error en el login"})
     }
 }
