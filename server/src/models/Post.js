@@ -4,15 +4,16 @@ const PostSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        trim: true,
     },
     content: {
         type: String,
         required: true,
     },
     author: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
         default: "Anonymous",
+        required: true,
     },
     tags: {
         type: [String]
