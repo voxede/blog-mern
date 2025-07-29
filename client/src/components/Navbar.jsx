@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import { useTheme } from "styled-components"
 
 const Nav = styled.nav`
     background: ${({ theme }) => theme.colors.dark};
@@ -21,15 +20,12 @@ const NavLinks = styled.div`
 `
 
 const Navbar = () => {
-    const theme = useTheme()
-    console.log(theme)
-
     return (
         <Nav>
             <NavBrand to="/">Blog MERN</NavBrand>
             <NavLinks>
-                <Link to="/">Home</Link>
-                <Link to="/blog">Blog</Link>
+                <Link to="/login">Entrar</Link>
+                <Link to="/register">Registro</Link>
             </NavLinks>
         </Nav>
     )
