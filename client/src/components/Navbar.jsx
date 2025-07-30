@@ -1,5 +1,7 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { useContext } from "react"
+import { AuthContext } from "../context/AuthContext"
 
 const Nav = styled.nav`
     background: ${({ theme }) => theme.colors.dark};
@@ -20,12 +22,17 @@ const NavLinks = styled.div`
 `
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext)
+
     return (
         <Nav>
             <NavBrand to="/">Blog MERN</NavBrand>
             <NavLinks>
                 <Link to="/login">Entrar</Link>
                 <Link to="/register">Registro</Link>
+                {user?.role === "admin" && (
+                    <Link to="/admin">Admin Dashboard</Link>
+                )}
             </NavLinks>
         </Nav>
     )

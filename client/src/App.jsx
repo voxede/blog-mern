@@ -4,14 +4,10 @@ import PostDetail from "./pages/PostDetail"
 import Navbar from "./components/Navbar"
 import { useContext } from "react"
 import { AuthContext } from "./context/AuthContext"
-import AdminPanel from "./pages/AdminPanel"
 import Login from "./pages/Auth/Login"
 import Register from "./pages/Auth/Register"
-
-const ProtectedRoute = ({ children }) => {
-    const { user } = useContext(AuthContext)
-    return user ? children : <Navigate to="/login"/>
-}
+import AdminDashboard from "./pages/Admin/AdminDashboard"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 const App= () => {
     return (
@@ -24,6 +20,15 @@ const App= () => {
 
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/register" element={<Register/>}/>
+
+                <Route
+                    path="/admin"
+                    element={
+                        <ProtectedRoute requiredRole="admin">
+                            <AdminDashboard/>
+                        </ProtectedRoute>
+                    }
+                />
             </Routes>
         </Router>
     )
